@@ -49,7 +49,7 @@ public:
 	*/
 	explicit BlockItem(Block * b);
 
-	const Block * block() const { return m_block; }
+    Block * block() const { return m_block; }
 
 	/*! Searches for a socket item at the given scene position and returns a pointer to it, if
 		it is not yet connected.

@@ -69,7 +69,7 @@ public:
 		already the changes. If you need to create UNDO actions based on the previous
 		state of the network, you must keep a separate copy of the network.
 	*/
-	const Network & network() const;
+	Network & network() const;
 
 	/*! Generates a pixmap from the current scene rect.
 		Aspect ratio is kept, and the image is fitted into the selected target size.
@@ -79,7 +79,7 @@ public:
 	// query functions
 
 	/*! Looks up the block item with a block that has the given name. */
-	const BlockItem * blockItemByName(const QString & blockName) const;
+	BlockItem * blockItemByName(const QString & blockName) const;
 
 
 	// Functions called from blocks/items to adjust the network due to user interaction
@@ -158,7 +158,7 @@ public:
 	/*! There can be several currently selected blocks.
 		\return Returns a list of selected blocks or an empty list, if none is selected.
 	*/
-	QList<const Block*> selectedBlocks() const;
+	QList<Block*> selectedBlocks() const;
 
 	/*! There can be only one selected connector.
 		\return Returns a pointer to the selected connector or a nullptr, if none is selected.

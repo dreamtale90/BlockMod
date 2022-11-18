@@ -152,7 +152,7 @@ QPixmap SceneManager::generatePixmap(QSize targetSize) {
 }
 
 
-const BlockItem * SceneManager::blockItemByName(const QString & blockName) const {
+BlockItem * SceneManager::blockItemByName(const QString & blockName) const {
 	for (BlockItem* item : m_blockItems) {
 		if (item->m_block->m_name == blockName)
 			return item;
@@ -453,9 +453,9 @@ void SceneManager::startSocketConnection(const SocketItem & outletSocketItem, co
 }
 
 
-QList<const Block*> SceneManager::selectedBlocks() const {
+QList<Block*> SceneManager::selectedBlocks() const {
 	QList<QGraphicsItem*> selected = selectedItems();
-	QList<const BLOCKMOD::Block *> selectedBlocks;
+	QList<BLOCKMOD::Block *> selectedBlocks;
 	for (QGraphicsItem * item : selected) {
 		BLOCKMOD::BlockItem * bi = dynamic_cast<BLOCKMOD::BlockItem *>(item);
 		if (bi != nullptr)
