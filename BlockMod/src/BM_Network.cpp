@@ -188,8 +188,8 @@ void Network::checkNames() const {
 			throw std::runtime_error("Invalid source socket '"+con.m_sourceSocket.toStdString()+"'(must be an outlet socket).");
 		if (!s2->m_inlet)
 			throw std::runtime_error("Invalid target socket '"+con.m_targetSocket.toStdString()+"' (must be an inlet socket).");
-		if (connectedSockets.contains(con.m_targetSocket))
-			throw std::runtime_error("Target socket '"+con.m_targetSocket.toStdString()+"' connected twice!");
+		// if (connectedSockets.contains(con.m_targetSocket))
+			// throw std::runtime_error("Target socket '"+con.m_targetSocket.toStdString()+"' connected twice!");
 		connectedSockets.insert(con.m_targetSocket);
 	}
 }

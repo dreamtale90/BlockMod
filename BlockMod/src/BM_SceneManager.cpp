@@ -643,10 +643,10 @@ void SceneManager::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent) {
 				SocketItem * si = bi->inletSocketAcceptingConnection(p);
 				if (si != nullptr) {
 					// only allow hovering for sockets without connection
-					if (!isConnectedSocket(bi->block(), si->socket())) {
+					// if (!isConnectedSocket(bi->block(), si->socket())) {
 						si->m_hovered = true;
 						si->update();
-					}
+					// }
 				}
 			}
 		}
@@ -675,12 +675,12 @@ void SceneManager::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent) {
 					SocketItem * si = bi->inletSocketAcceptingConnection(p);
 					if (si != nullptr) {
 						// only allow hovering for sockets without connection
-						if (!isConnectedSocket(bi->block(), si->socket())) {
+						// if (!isConnectedSocket(bi->block(), si->socket())) {
 							// found one - remember this socket and the starting socket for our connection
 							startSocket = m_network->m_connectors.back().m_sourceSocket;
 							targetSocket = bi->block()->m_name + "." + si->socket()->m_name;
 							break;
-						}
+						// }
 					}
 				}
 			}
