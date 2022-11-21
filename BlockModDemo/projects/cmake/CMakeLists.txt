@@ -27,6 +27,8 @@ set( APP_QRCS ${PROJECT_SOURCE_DIR}/../../resources/BlockModDemo.qrc )
 # set rc file
 set ( APP_WIN_RC ${PROJECT_SOURCE_DIR}/../../resources/BlockModDemo.rc )
 
+set(CMAKE_BUILD_TYPE "Debug")
+
 # run uic and moc compilers, add resources
 
 qt5_add_resources( APP_RC_SRCS ${APP_QRCS} )

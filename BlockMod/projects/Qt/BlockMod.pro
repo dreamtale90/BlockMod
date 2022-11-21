@@ -4,6 +4,7 @@
 
 TARGET = BlockMod
 TEMPLATE = lib
+CONFIG += staticlib
 
 # common project configurations, source this file after TEMPLATE was specified
 include( BlockMod.pri )
