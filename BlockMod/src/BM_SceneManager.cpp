@@ -97,7 +97,7 @@ void SceneManager::setNetwork(const Network & network) {
 }
 
 
-const Network & SceneManager::network() const {
+Network & SceneManager::network() const {
 	return *m_network;
 }
 

@@ -90,7 +90,7 @@ void BlockModDemoDialog::on_pushButtonConnectSockets_clicked() {
 void BlockModDemoDialog::on_pushButtonRemoveBlock_clicked() {
 	// find out selected blocks
 
-	QList<const BLOCKMOD::Block *> selectedBlocks = m_sceneManager->selectedBlocks();
+	QList<BLOCKMOD::Block *> selectedBlocks = m_sceneManager->selectedBlocks();
 	for (const BLOCKMOD::Block * bi : selectedBlocks) {
 		m_sceneManager->removeBlock(bi);
 	}
