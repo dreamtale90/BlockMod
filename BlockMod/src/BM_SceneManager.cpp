@@ -485,6 +485,20 @@ void SceneManager::addBlock(const Block & block) {
 	m_blockItems.append(item);
 }
 
+void SceneManager::addConnector(const QString & source, const QString & target) {
+    BLOCKMOD::Connector newConn;
+    newConn.m_name = "new connector";
+    newConn.m_sourceSocket = source;
+    newConn.m_targetSocket = target;
+	m_network->m_connectors.push_back(newConn);
+	m_network->adjustConnector(m_network->m_connectors.back());
+
+	QList<ConnectorSegmentItem *> newConnItems = createConnectorItems(m_network->m_connectors.back());
+	for (BLOCKMOD::ConnectorSegmentItem *item : newConnItems) {
+		addItem(item);
+		m_connectorSegmentItems.append(item);
+	}
+}
 
 void SceneManager::addConnector(const Connector & con) {
 	// first check, that indeed the source/target connectors are valid

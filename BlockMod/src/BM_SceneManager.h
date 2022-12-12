@@ -173,6 +173,8 @@ public:
 	*/
 	void addBlock(const Block & block);
 
+	void addConnector(const QString & source, const QString & target);
+
 	/*! Adds a new connector.
 		The source and target sockets must match existing blocks/sockets in the network.
 		Otherwise an exception is thrown.
