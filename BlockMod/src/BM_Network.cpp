@@ -1,4 +1,4 @@
-/*	BSD 3-Clause License
+﻿/*	BSD 3-Clause License
 
 	This file is part of the BlockMod Library.
 
@@ -90,10 +90,6 @@ void Network::readXML(const QString & fname) {
 						readList(reader, m_blocks);
 					else if (sectionName == "Connectors")
 						readList(reader, m_connectors);
-					else {
-						reader.raiseError( QString("Unknown tag '%1'.").arg(sectionName));
-						break;
-					}
 				}
 				else if (reader.isEndElement()) {
 					QString sectionName = reader.name().toString();
