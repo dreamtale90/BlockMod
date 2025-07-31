@@ -1,4 +1,4 @@
-/*	BSD 3-Clause License
+﻿/*	BSD 3-Clause License
 
 	This file is part of the BlockMod Library.
 
@@ -96,6 +96,10 @@ protected:
 	/*! set the zoom center. */
 	void mouseMoveEvent(QMouseEvent *event) override;
 
+    void mousePressEvent(QMouseEvent *event) override;
+
+    void mouseReleaseEvent(QMouseEvent *event) override;
+
 	/*! Enables the zoom. */
 	void wheelEvent(QWheelEvent *i_event) override;
 
@@ -120,8 +124,10 @@ protected:
 
 private:
 
+    bool isDragging = false;
+
 	/*! The current mouse point. */
-	QPointF							m_pos;
+    QPoint							m_pos;
 
 	/*! The major grid lines. */
 	QVarLengthArray<QLineF, 100>	m_majorGrid;

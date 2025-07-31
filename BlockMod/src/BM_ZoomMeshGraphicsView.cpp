@@ -197,10 +197,31 @@ void ZoomMeshGraphicsView::leaveEvent(QEvent *event) {
 }
 
 
-void ZoomMeshGraphicsView::mouseMoveEvent(QMouseEvent *i_event) {
-	QGraphicsView::mouseMoveEvent(i_event);
-	m_pos = mapToScene(i_event->pos());
-	viewport()->update();
+void ZoomMeshGraphicsView::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton && !itemAt(event->pos())) {
+        isDragging = true;
+    	m_pos = event->pos();
+        setCursor(Qt::ClosedHandCursor);
+    }
+
+    QGraphicsView::mousePressEvent(event);
+}
+
+void ZoomMeshGraphicsView::mouseMoveEvent(QMouseEvent *event) {
+    if (isDragging) {
+        QPointF delta = mapToScene(m_pos) - mapToScene(event->pos());
+        setSceneRect(sceneRect().translated(delta));
+        m_pos = event->pos();
+    }
+
+    QGraphicsView::mouseMoveEvent(event);
+}
+
+void ZoomMeshGraphicsView::mouseReleaseEvent(QMouseEvent *event) {
+    isDragging = false;
+    setCursor(Qt::ArrowCursor);
+
+    QGraphicsView::mouseReleaseEvent(event);
 }
 
 
